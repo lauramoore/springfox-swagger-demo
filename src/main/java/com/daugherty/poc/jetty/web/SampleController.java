@@ -21,8 +21,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.daugherty.poc.jetty.service.HelloWorldService;
 
+import com.daugherty.poc.jetty.service.HelloWorldService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value="helloworld", description="Operations to Greet the World")
 @Controller
 public class SampleController {
 
@@ -31,6 +35,7 @@ public class SampleController {
 
 	@RequestMapping("/")
 	@ResponseBody
+	@ApiOperation(value="say hello world")
 	public String helloWorld() {
 		return this.helloWorldService.getHelloMessage();
 	}
